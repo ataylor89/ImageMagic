@@ -1,3 +1,5 @@
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
 import numpy as np
 
 def make_canvas(img):
@@ -27,7 +29,26 @@ def get_ij(x, y, n):
     return [int(x + n/2), int(n/2 - y)]
 
 # Rotates a vector 90 degrees counterclockwise around the origin
-def rot90(x, y):
+def rot_vec_90(x, y):
     A = [[0, -1], 
          [1, 0]]
     return np.dot(A, [x, y]).tolist()
+
+# Rotates an image 90 degrees counterclockwise around the origin
+def rot_img_90(filename):
+    img = mpimg.imread(filename)
+    n, m = len(img), len(img[0])
+    print('%dx%d matrix (%s)' %(n, m, filename))
+
+    canvas = make_canvas(img)
+    N = len(canvas)
+    print('%dx%d canvas' %(N, N))
+
+    tcanvas = [[[255, 255, 255] for i in range(N)] for j in range(N)]
+    for row in range(int(n/2), int(N-n/2)):
+        for col in range(int(m/2), int(N-m/2)):
+            [x, y] = get_xy(col, row, N)
+            [x, y] = rot_vec_90(x, y)
+            [i, j] = get_ij(x, y, N)
+            tcanvas[j][i] = canvas[row][col]
+    return tcanvas
