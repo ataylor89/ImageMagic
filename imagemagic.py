@@ -7,7 +7,7 @@ def make_canvas(img):
     n = len(img)
     m = len(img[0])
     N = max(n, m) * 2
-    # Let's create an NxN blank white canvas 
+    # We create a blank white canvas from an NxN square matrix
     canvas = [[[255, 255, 255] for i in range(N)] for j in range(N)]
     for row in range(n):
         for col in range(m):
