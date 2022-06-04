@@ -12,8 +12,6 @@ def make_canvas(img):
     for row in range(n):
         for col in range(m):
             # We shift our image horizontally by m/2 and vertically by m-n/2
-            # Horizontal shift = m - m/2 = m/2
-            # Vertical shift = m - n/2
             canvas[row+int(m-n/2)][col+int(m/2)] = img[row][col]
     return canvas
 
