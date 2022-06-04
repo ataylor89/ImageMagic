@@ -21,8 +21,10 @@ def get_xy(i, j, n):
 
 # Gets the (i, j) values for pixel (x, y) in an nxn square matrix
 def get_ij(x, y, n):
-    # x = i - n/2 => i = x + n/2
-    # y = n/2 - j => j = n/2 - y
+    # x = i - n/2 
+    # i = x + n/2
+    # y = n/2 - j 
+    # j = n/2 - y
     return [int(x + n/2), int(n/2 - y)]
 
 # Rotates a vector 90 degrees counterclockwise around the origin
