@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import numpy as np
 
+# Creates a square matrix to contain the image, and centers the image in the canvas
 def make_canvas(img):
     n = len(img)
     m = len(img[0])
