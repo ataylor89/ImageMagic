@@ -40,7 +40,7 @@ def rot_img_90(filename):
     print('%dx%d canvas' %(N, N))
 
     # Make a blank white canvas for the new image
-    # We are using the letter 't' as a prefix or suffix to mean "transformed" (by a linear transformation)
+    # We are using the letter 't' as a prefix or suffix to mean "transformed"
     tcanvas = [[[255, 255, 255] for i in range(N)] for j in range(N)]
 
     # Create a matrix X for the (x, y) coordinates of image pixels
