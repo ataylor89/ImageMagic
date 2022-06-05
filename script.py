@@ -1,6 +1,7 @@
 import imagemagic
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
+import math
 
 FILENAME = 'stacksofwheat.jpg'
 
@@ -9,10 +10,10 @@ def show_img():
     plt.imshow(img)
     plt.show()
 
-def rot_img():
-    canvas = imagemagic.rot_img_90(FILENAME)
+def rot_img(T):
+    canvas = imagemagic.rot_img(FILENAME, T)
     plt.imshow(canvas)
     plt.show()
 
 if __name__ == "__main__":
-    rot_img()
+    rot_img(math.pi/2)
