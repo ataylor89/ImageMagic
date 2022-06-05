@@ -46,8 +46,8 @@ def rot_img(filename, T):
 
     # Create a matrix X for the (x, y) coordinates of image pixels
     X = []
-    for row in range(int(n/2), int(N-n/2)):
-        for col in range(int(m/2), int(N-m/2)):
+    for row in range(10, N-10):
+        for col in range(10, N-10):
             vertex = get_xy(col, row, N)
             X.append(np.array(vertex))
     X = tuple(X)
