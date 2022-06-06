@@ -9,5 +9,7 @@ FILENAME = 'stacksofwheat.jpg'
 # img = imagemagic.rotate(FILENAME, 2*math.pi)
 img = imagemagic.reflectx(FILENAME)
 # img = imagemagic.reflecty(FILENAME)
+plt.axis("off")
 plt.imshow(img)
 plt.show()
+# plt.savefig('reflectx.png')
