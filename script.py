@@ -5,7 +5,9 @@ import math
 
 FILENAME = 'stacksofwheat.jpg'
 
-# imagemagic.rot_img(FILENAME, math.pi/2)
-img = imagemagic.reflecty(FILENAME)
+# img = mpimg.imread(FILENAME)
+# img = imagemagic.rotate(FILENAME, 2*math.pi)
+img = imagemagic.reflectx(FILENAME)
+# img = imagemagic.reflecty(FILENAME)
 plt.imshow(img)
 plt.show()
