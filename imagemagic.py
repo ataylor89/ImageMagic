@@ -42,9 +42,7 @@ def rot_img(filename, radians):
     V = np.column_stack(V)
     # Perform the linear transformation T = AV to get the transformed vertices
     T = np.dot(A, V)
-    # Get the maximum and minimum values for x-coordinates in T
     xmax, xmin = max(T[0]), min(T[0])
-    # Get the maximum and minimum values for y-coordinates in T
     ymax, ymin = max(T[1]), min(T[1])
     # N is approximately the difference between maximum and minimum y-values from T
     # M is approximately the difference between maximum and minimum x-values from T
