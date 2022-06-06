@@ -22,7 +22,7 @@ def get_xy(i, j, n, m):
 # For example if n=100, m=200
 # Then the vertices of the image are (99.5, 49.5), (-99.5, 49.5), (-99.5, -49.5), (99.5, -49.5)
 def get_ij(x, y, n, m):
-    return [int(x + (m-1)/2), int((n-1)/2 - y)]
+    return [int(round(x + (m-1)/2)), int(round((n-1)/2 - y))]
 
 # Rotates an image around the origin by the specified number of radians
 def rot_img(filename, radians):
@@ -47,7 +47,10 @@ def rot_img(filename, radians):
     T = np.dot(A, V)
     xmax, xmin = max(T[0]), min(T[0])
     ymax, ymin = max(T[1]), min(T[1])
-    N, M = int(ymax-ymin)+2, int(xmax-xmin)+2
+    print('xmax=%1.2f xmin=%1.2f' %(xmax, xmin))
+    print('ymax=%1.2f ymin=%1.2f' %(ymax, ymin))
+    N, M = int(round(ymax-ymin))+1, int(round(xmax-xmin))+1
+    print("N=%d\nM=%d" %(N, M))
 
     # Convert to a new coordinate system with (x, y) coordinates and an origin at the center of the image
     # Store the (x, y) coordinates of every pixel as column vectors in X
