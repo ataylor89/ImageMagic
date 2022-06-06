@@ -3,68 +3,69 @@ import matplotlib.image as mpimg
 import numpy as np
 import math
 
-# Creates a square matrix to contain the image, and centers the image in the canvas
-def make_canvas(img):
-    n = len(img)
-    m = len(img[0])
-    N = max(n, m) * 2
-    # We create a blank white canvas from an NxN square matrix
-    canvas = [[[255, 255, 255] for i in range(N)] for j in range(N)]
-    for row in range(n):
-        for col in range(m):
-            # We shift our image horizontally by m/2 and vertically by m-n/2
-            canvas[row+int(m-n/2)][col+int(m/2)] = img[row][col]
-    return canvas
+# Gets the (x, y) coordinates of pixel (i, j) in an nxm matrix
+def get_xy(i, j, n, m):
+    return [i - m/2, n/2 - j]
 
-# Gets the (x, y) coordinates of pixel (i, j) in an nxn square matrix
-def get_xy(i, j, n):
-    return [i - n/2, n/2 - j]
-
-# Gets the (i, j) values for pixel (x, y) in an nxn square matrix
-def get_ij(x, y, n):
-    # x = i - n/2 
-    # i = x + n/2
+# Gets the (i, j) values for a pixel with coordinates (x, y) in an nxm matrix
+def get_ij(x, y, n, m):
+    # x = i - m/2 
+    # i = x + m/2
     # y = n/2 - j 
     # j = n/2 - y
-    return [int(x + n/2), int(n/2 - y)]
+    return [int(x + m/2), int(n/2 - y)]
 
-# Rotates an image around the origin by T radians
-def rot_img(filename, T):
+# Rotates an image around the origin by the specified number of radians
+def rot_img(filename, radians):
     # Read the image from file
     img = mpimg.imread(filename)
     n, m = len(img), len(img[0])
     print('%dx%d matrix (%s)' %(n, m, filename))
 
-    # Make a blank white canvas to contain the image
-    canvas = make_canvas(img)
-    N = len(canvas)
-    print('%dx%d canvas' %(N, N))
+    # Create the rotation matrix A
+    A = [[math.cos(radians), -1 * math.sin(radians)],
+         [math.sin(radians), math.cos(radians)]]
 
-    # Make a blank white canvas for the new image
-    # We are using the letter 't' as a prefix or suffix to mean "transformed"
-    tcanvas = [[[255, 255, 255] for i in range(N)] for j in range(N)]
+    # Get the dimensions for our new image
+    # N is the number of rows, M is the number of columns
+    # V and T are vertex matrices (T contains the transformed vertices)
+    V = (np.array(get_xy(0, 0, n, m)), 
+            np.array(get_xy(m-1, 0, n, m)),
+            np.array(get_xy(0, n-1, n, m)),
+            np.array(get_xy(m-1, n-1, n, m)))
+    V = np.column_stack(V)
+    T = np.dot(A, V)
+    xmax, xmin = max(T[0]), min(T[0])
+    ymax, ymin = max(T[1]), min(T[1])
+    N,M = int(ymax-ymin) + 10, int(xmax-xmin) + 10
 
-    # Create a matrix X for the (x, y) coordinates of image pixels
+    # Convert to a new coordinate system with (x, y) coordinates 
+    # and an origin at the center of the image
+    # Store the (x, y) coordinates of every pixel in matrix X as column vectors
     X = []
-    for row in range(10, N-10):
-        for col in range(10, N-10):
-            vertex = get_xy(col, row, N)
+    for row in range(n):
+        for col in range(m):
+            vertex = get_xy(col, row, n, m)
             X.append(np.array(vertex))
     X = tuple(X)
     X = np.column_stack(X)  
 
-    # Multiply X by the rotation matrix and store in a new matrix Y
-    A = [[math.cos(T), -1 * math.sin(T)],
-         [math.sin(T), math.cos(T)]]
+    # Perform the linear transformation Y = AX
     Y = np.dot(A, X)
 
-    # Write the new image (after transformation) to its canvas
-    num_vertices = len(X[0])
-    for i in range(num_vertices):
-        x, y = X[0][i], X[1][i]
-        xt, yt = Y[0][i], Y[1][i]
-        [i, j] = get_ij(x, y, N)
-        [it, jt] = get_ij(xt, yt, N)
-        tcanvas[jt][it] = canvas[j][i]
+    # Create a matrix for our new image
+    # Let's call it canvas
+    # The new matrix has N rows and M columns
+    canvas = [[[255, 255, 255] for i in range(M)] for j in range(N)]
 
-    return tcanvas
+    # Write the new image (after transformation) to canvas
+    num_cols = len(X[0])
+    for col in range(num_cols):
+        x, y = X[0][col], X[1][col]
+        xt, yt = Y[0][col], Y[1][col]
+        [i, j] = get_ij(x, y, n, m)
+        [it, jt] = get_ij(xt, yt, N, M)
+        pixel = img[j][i]
+        canvas[jt][it] = pixel
+
+    return canvas

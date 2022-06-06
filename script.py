@@ -16,9 +16,4 @@ def rot_img(T):
     plt.show()
 
 if __name__ == "__main__":
-    rot_img(math.pi/2)
-    # rot_img(math.pi)
-    # rot_img(3*math.pi/2)
-    # rot_img(math.pi/4)
-    # rot_img(2*math.pi)
-    # show_img()
+    rot_img(2*math.pi)
