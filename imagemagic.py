@@ -34,15 +34,20 @@ def rot_img(filename, radians):
 
     # Get the dimensions for our new image
     # N is the number of rows, M is the number of columns
-    # V and T are vertex matrices (T contains the transformed vertices)
+    # V and T are vertex matrices 
     V = (np.array(get_xy(0, 0, n, m)), 
             np.array(get_xy(m-1, 0, n, m)),
             np.array(get_xy(0, n-1, n, m)),
             np.array(get_xy(m-1, n-1, n, m)))
     V = np.column_stack(V)
+    # Perform the linear transformation T = AV to get the transformed vertices
     T = np.dot(A, V)
+    # Get the maximum and minimum values for x-coordinates in T
     xmax, xmin = max(T[0]), min(T[0])
+    # Get the maximum and minimum values for y-coordinates in T
     ymax, ymin = max(T[1]), min(T[1])
+    # N is approximately the difference between maximum and minimum y-values from our transformed vertices
+    # M is approximately the difference between maximum and minimum x-values from our transformed vertices
     N,M = int(ymax-ymin+2), int(xmax-xmin+2) 
 
     # Convert to a new coordinate system with (x, y) coordinates and an origin at the center of the image
