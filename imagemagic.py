@@ -46,9 +46,9 @@ def rot_img(filename, radians):
     xmax, xmin = max(T[0]), min(T[0])
     # Get the maximum and minimum values for y-coordinates in T
     ymax, ymin = max(T[1]), min(T[1])
-    # N is approximately the difference between maximum and minimum y-values from our transformed vertices
+    # N is approximately the difference between maximum and minimum y-values from T
     N = int(ymax-ymin+2) 
-    # M is approximately the difference between maximum and minimum x-values from our transformed vertices
+    # M is approximately the difference between maximum and minimum x-values from T
     M = int(xmax-xmin+2) 
 
     # Convert to a new coordinate system with (x, y) coordinates and an origin at the center of the image
