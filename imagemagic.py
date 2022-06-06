@@ -14,10 +14,10 @@ def get_xy(i, j, n, m):
 # The xy coordinate system has an origin at the center of the matrix
 #
 # Equations:
-# x = i - m/2 
-# i = x + m/2
-# y = n/2 - j 
-# j = n/2 - y
+# x = i - (m-1)/2 
+# i = x + (m-1)/2
+# y = (n-1)/2 - j 
+# j = (n-1)/2 - y
 def get_ij(x, y, n, m):
     return [int(x + (m-1)/2), int((n-1)/2 - y)]
 
