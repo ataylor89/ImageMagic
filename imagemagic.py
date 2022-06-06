@@ -25,7 +25,7 @@ def get_ij(x, y, n, m):
     return [int(round(x + (m-1)/2)), int(round((n-1)/2 - y))]
 
 # Rotates an image around the origin by the specified number of radians
-def rot_img(filename, radians):
+def rotate(filename, radians):
     A = [[math.cos(radians), -1 * math.sin(radians)],
          [math.sin(radians), math.cos(radians)]]
 
