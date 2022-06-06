@@ -28,21 +28,18 @@ def get_ij(x, y, n, m):
 def rotate(filename, radians):
     A = [[math.cos(radians), -1 * math.sin(radians)],
          [math.sin(radians), math.cos(radians)]]
-
     return transform(filename, A)
 
 # Reflects an image around the x axis in an xy coordinate system
 def reflectx(filename):
     A = [[1, 0],
          [0, -1]]
-
     return transform(filename, A)
 
 # Reflects an image around the y axis in an xy coordinate system
 def reflecty(filename):
     A = [[-1, 0], 
          [0, 1]]
-
     return transform(filename, A)
 
 def transform(filename, A):
