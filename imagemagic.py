@@ -8,11 +8,11 @@ def get_xy(i, j, n, m):
     return [i - m/2, n/2 - j]
 
 # Gets the (i, j) values for a pixel with coordinates (x, y) in an nxm matrix
+# x = i - m/2 
+# i = x + m/2
+# y = n/2 - j 
+# j = n/2 - y
 def get_ij(x, y, n, m):
-    # x = i - m/2 
-    # i = x + m/2
-    # y = n/2 - j 
-    # j = n/2 - y
     return [int(x + m/2), int(n/2 - y)]
 
 # Rotates an image around the origin by the specified number of radians
