@@ -71,8 +71,8 @@ def rot_img(filename, radians):
     # The new matrix has N rows and M columns
     canvas = [[[255, 255, 255] for i in range(M)] for j in range(N)]
 
-    # Copy the pixels in img to the appropriate row and column in canvas 
-    # Convert between coordinate systems to get the new positions of pixels
+    # Copy the values in img to the appropriate row and column in canvas 
+    # Convert between coordinate systems to get the new position of values
     num_cols = len(X[0])
     for col in range(num_cols):
         x, y = X[0][col], X[1][col]
