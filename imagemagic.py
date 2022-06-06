@@ -5,19 +5,23 @@ import math
 
 # Gets the (x, y) coordinates of pixel (i, j) in an nxm matrix
 # i is the column and j is the row
-# The xy coordinate system has an origin at the center of the matrix
+# The xy coordinate system has an origin at the center of the image
 def get_xy(i, j, n, m):
     return [i - (m-1)/2, (n-1)/2 - j]
 
 # Gets the (i, j) values for a pixel with coordinates (x, y) in an nxm matrix
 # i is the column and j is the row
-# The xy coordinate system has an origin at the center of the matrix
+# The xy coordinate system has an origin at the center of the image
 #
 # Equations:
 # x = i - (m-1)/2 
 # i = x + (m-1)/2
 # y = (n-1)/2 - j 
 # j = (n-1)/2 - y
+#
+# For example if n=100, m=200
+# Then the vertices of the image are (99.5, 49.5), (-99.5, 49.5), (-99.5, -49.5), (99.5, -49.5)
+# in the xy coordinate system with an origin at the center of the image
 def get_ij(x, y, n, m):
     return [int(x + (m-1)/2), int((n-1)/2 - y)]
 
