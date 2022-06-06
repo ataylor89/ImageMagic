@@ -9,7 +9,7 @@ import math
 def get_xy(i, j, n, m):
     return [i - (m-1)/2, (n-1)/2 - j]
 
-# Gets the (i, j) values for a pixel with coordinates (x, y) in an nxm matrix
+# Gets the (i, j) values in an nxm matrix for a pixel with coordinates (x, y) 
 # i is the column and j is the row
 # The xy coordinate system has an origin at the center of the image
 #
