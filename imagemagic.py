@@ -21,7 +21,6 @@ def get_xy(i, j, n, m):
 #
 # For example if n=100, m=200
 # Then the vertices of the image are (99.5, 49.5), (-99.5, 49.5), (-99.5, -49.5), (99.5, -49.5)
-# in the xy coordinate system with an origin at the center of the image
 def get_ij(x, y, n, m):
     return [int(x + (m-1)/2), int((n-1)/2 - y)]
 
