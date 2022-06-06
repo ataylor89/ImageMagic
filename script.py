@@ -5,15 +5,7 @@ import math
 
 FILENAME = 'stacksofwheat.jpg'
 
-def show_img():
-    img = mpimg.imread(FILENAME)
-    plt.imshow(img)
-    plt.show()
-
-def rot_img(T):
-    canvas = imagemagic.rot_img(FILENAME, T)
-    plt.imshow(canvas)
-    plt.show()
-
-if __name__ == "__main__":
-    rot_img(math.pi/2)
+# imagemagic.rot_img(FILENAME, math.pi/2)
+img = imagemagic.reflecty(FILENAME)
+plt.imshow(img)
+plt.show()

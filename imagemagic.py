@@ -26,14 +26,30 @@ def get_ij(x, y, n, m):
 
 # Rotates an image around the origin by the specified number of radians
 def rot_img(filename, radians):
+    A = [[math.cos(radians), -1 * math.sin(radians)],
+         [math.sin(radians), math.cos(radians)]]
+
+    return transform(filename, A)
+
+# Reflects an image around the x axis in an xy coordinate system
+def reflectx(filename):
+    A = [[1, 0],
+         [0, -1]]
+
+    return transform(filename, A)
+
+# Reflects an image around the y axis in an xy coordinate system
+def reflecty(filename):
+    A = [[-1, 0], 
+         [0, 1]]
+
+    return transform(filename, A)
+
+def transform(filename, A):
     # Read the image from file
     img = mpimg.imread(filename)
     n, m = len(img), len(img[0])
     print('%dx%d matrix (%s)' %(n, m, filename))
-
-    # Create the rotation matrix A
-    A = [[math.cos(radians), -1 * math.sin(radians)],
-         [math.sin(radians), math.cos(radians)]]
 
     # Get the dimensions for our new image
     # N is the number of rows, M is the number of columns
