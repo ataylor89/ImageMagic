@@ -7,7 +7,7 @@ import math
 # i is the column and j is the row
 # The xy coordinate system has an origin at the center of the matrix
 def get_xy(i, j, n, m):
-    return [i - m/2, n/2 - j]
+    return [i - (m-1)/2, (n-1)/2 - j]
 
 # Gets the (i, j) values for a pixel with coordinates (x, y) in an nxm matrix
 # i is the column and j is the row
@@ -19,7 +19,7 @@ def get_xy(i, j, n, m):
 # y = n/2 - j 
 # j = n/2 - y
 def get_ij(x, y, n, m):
-    return [int(x + m/2), int(n/2 - y)]
+    return [int(x + (m-1)/2), int((n-1)/2 - y)]
 
 # Rotates an image around the origin by the specified number of radians
 def rot_img(filename, radians):
@@ -48,7 +48,7 @@ def rot_img(filename, radians):
     ymax, ymin = max(T[1]), min(T[1])
     # N is approximately the difference between maximum and minimum y-values from T
     # M is approximately the difference between maximum and minimum x-values from T
-    N, M = int(ymax-ymin+2), int(xmax-xmin+2)
+    N, M = int(ymax-ymin)+1, int(xmax-xmin)+1
 
     # Convert to a new coordinate system with (x, y) coordinates and an origin at the center of the image
     # Store the (x, y) coordinates of every pixel in matrix X as column vectors
