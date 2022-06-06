@@ -9,6 +9,7 @@ def get_xy(i, j, n, m):
 
 # Gets the (i, j) values for a pixel with coordinates (x, y) in an nxm matrix
 # i is the column and j is the row
+# Equations:
 # x = i - m/2 
 # i = x + m/2
 # y = n/2 - j 
