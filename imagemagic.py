@@ -71,7 +71,6 @@ def rot_img(filename, radians):
         xt, yt = Y[0][col], Y[1][col]
         [i, j] = get_ij(x, y, n, m)
         [it, jt] = get_ij(xt, yt, N, M)
-        pixel = img[j][i]
-        canvas[jt][it] = pixel
+        canvas[jt][it] = img[j][i]
 
     return canvas
