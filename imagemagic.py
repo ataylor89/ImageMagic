@@ -56,6 +56,7 @@ def rot_img(filename, radians):
     X = np.column_stack(X)  
 
     # Perform the linear transformation Y = AX
+    # Y contains the transformed vectors
     Y = np.dot(A, X)
 
     # Create a matrix for our new image
