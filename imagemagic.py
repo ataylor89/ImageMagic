@@ -8,6 +8,7 @@ def get_xy(i, j, n, m):
     return [i - m/2, n/2 - j]
 
 # Gets the (i, j) values for a pixel with coordinates (x, y) in an nxm matrix
+# i is the column and j is the row
 # x = i - m/2 
 # i = x + m/2
 # y = n/2 - j 
