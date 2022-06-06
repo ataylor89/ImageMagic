@@ -4,12 +4,15 @@ import numpy as np
 import math
 
 # Gets the (x, y) coordinates of pixel (i, j) in an nxm matrix
+# i is the column and j is the row
 # The xy coordinate system has an origin at the center of the matrix
 def get_xy(i, j, n, m):
     return [i - m/2, n/2 - j]
 
 # Gets the (i, j) values for a pixel with coordinates (x, y) in an nxm matrix
 # i is the column and j is the row
+# The xy coordinate system has an origin at the center of the matrix
+#
 # Equations:
 # x = i - m/2 
 # i = x + m/2
