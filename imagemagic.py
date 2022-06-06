@@ -43,7 +43,7 @@ def rot_img(filename, radians):
     T = np.dot(A, V)
     xmax, xmin = max(T[0]), min(T[0])
     ymax, ymin = max(T[1]), min(T[1])
-    N,M = int(ymax-ymin) + 10, int(xmax-xmin) + 10
+    N,M = int(ymax-ymin) + 2, int(xmax-xmin) + 2
 
     # Convert to a new coordinate system with (x, y) coordinates and an origin at the center of the image
     # Store the (x, y) coordinates of every pixel in matrix X as column vectors
