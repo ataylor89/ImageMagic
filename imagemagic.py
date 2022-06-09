@@ -24,8 +24,6 @@ import math
 # 6. Get the row and column values for every column vector in matrices X and Y 
 #    and copy the RGB values from the old image into the new image
 #    using the appropriate row and column values
-#    In this algorithm we convert between xy coordinates and row and column values in the image
-#    The purpose of the XY coordinate system is to enable the linear transformations T = AV and Y = AX
 
 # Converting between row column values and xy coordinates
 # Let (x,y) be the coordinates of pixel P in an nxm image
