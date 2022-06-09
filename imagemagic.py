@@ -38,6 +38,8 @@ import math
 # which is equivalent to row = floor(i), col = floor(j)
 # This helps us convert between xy coordinates and row and column values
 # row and column for a pixel <-> ij coordinates <-> xy coordintes
+# The ij coordinate system gives a pixel's position relative to the upper left corner of the image
+# The xy coordinate system gives a pixel's position relative to the center of the image
 
 # Converting between coordinate systems
 # Given an nxm image (n is the number of rows, m is the number of columns)
