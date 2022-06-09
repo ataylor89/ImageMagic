@@ -74,7 +74,7 @@ def transform(filename, A):
     # The new matrix has N rows and M columns
     canvas = [[[255, 255, 255] for i in range(M)] for j in range(N)]
 
-    # Copy the RGB values in img to the appropriate row and column in canvas 
+    # Copy the RGB values from img into the appropriate pixel in canvas 
     num_cols = len(X[0])
     for col in range(num_cols):
         x, y = X[0][col], X[1][col]
