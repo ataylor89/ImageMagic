@@ -28,7 +28,7 @@ import math
 #    The purpose of the XY coordinate system is to enable the linear transformations T = AV and Y = AX
 
 # Coordinate systems
-# To make this I used two coordinate systems
+# To make this we use two coordinate systems
 # The xy coordinate system has an origin at the center of the image
 # The ij coordinate system has an origin at the upper left corner of the image
 # The coordinates for a pixel correspond to the center of the pixel (a pixel is a rectangle)
