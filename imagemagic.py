@@ -3,8 +3,38 @@ import matplotlib.image as mpimg
 import numpy as np
 import math
 
+# Algorithm:
+# 1. Create an XY coordinate system with an origin at the center of the image
+# 2. Get the XY coordinates of the corners of the image 
+# 3. Apply a linear transformation to the corners of the image
+#    Let A be the matrix of the transformation
+#    Let V be a matrix that has the xy coordinates of the corners as column vectors
+#    Then the xy coordinates of the new image are given by the transformation
+#    T = AV
+# 4. Calculate the dimensions of the new image N and M from the equations
+#    N = ymax-ymin + 1
+#    M = xmax-xmin + 1
+#    where ymax, ymin = max(T[1]), min(T[1])
+#    and xmax, xmin = max(T[0]), min(T[0])
+#    N is the number of rows in the new image and M is the number of columns
+# 5. Let X be a matrix that has the coordinates of every pixel from the image as a column vector
+#    Let A be the matrix of transformation
+#    Then the corresponding coordinates in the new image are given by the transformation
+#    Y = AX 
+# 6. Get the row and column values for every column vector in matrices X and Y 
+#    and copy the RGB values from the old image into the new image
+#    using the appropriate row and column values
+#    In this algorithm we convert between xy coordinates and row and column values in the image
+#    The purpose of the XY coordinate system is to enable the linear transformations T = AV and Y = AX
+
+# To make this I used two coordinate systems
+# The xy coordinate system has an origin at the center of the image
+# The ij coordinate system has an origin at the upper left corner of the image
+# The coordinates for a pixel correspond to the center of the pixel (a pixel is a rectangle)
+# Thus the ij coordinates for row 0 and column 0 are (0.5, 0.5)
+# In a 100x100 image, the xy coordinates for row 0 and column 0 are (-49.5, 49.5)
+
 # Gets the x, y coordinates of a pixel in an nxm image
-# The origin of the xy coordinate system is at the center of the image
 def get_xy(row, col, n, m):
     i, j = col + 0.5, row + 0.5
     return [i - m/2, n/2 - j]
