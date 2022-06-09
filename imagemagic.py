@@ -40,7 +40,7 @@ import math
 # row and column for a pixel <-> ij coordinates <-> xy coordintes
 
 # Converting between coordinate systems
-# Given an nxm image 
+# Given an nxm image (n is the number of rows, m is the number of columns)
 # x = i - m/2
 # y = n/2 - j
 # The above equations result from the following
