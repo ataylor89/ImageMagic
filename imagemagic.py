@@ -10,7 +10,6 @@ def get_xy(row, col, n, m):
     return [i - m/2, n/2 - j]
 
 # Gets the row and column of a pixel in an nxm image
-# The origin of the xy coordinate system is at the center of the image
 def get_rowcol(x, y, n, m):
     return [int(n/2 - y), int(x + m/2)]
 
