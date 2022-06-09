@@ -87,7 +87,6 @@ def transform(filename, A):
     print("N=%d\nM=%d" %(N, M))
 
     # Get the xy coordinates for every pixel and store as column vectors in matrix X
-    # The origin of the xy coordinate system is at the center of the image 
     X = []
     for row in range(n):
         for col in range(m):
