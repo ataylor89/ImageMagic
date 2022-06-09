@@ -39,6 +39,15 @@ import math
 # This helps us convert between xy coordinates and row and column values
 # row and column for a pixel <-> ij coordinates <-> xy coordintes
 
+# Converting between coordinate systems
+# Given an nxm image 
+# x = i - m/2
+# y = n/2 - j
+# The above equations result from the following
+# The ij coordinates for the center of the image are (m/2, n/2)
+# A pixel has a distance from the origin given by (i-m/2, n/2-j)
+# The xy coordinates of the pixel are (i-m/2, n/2-j)
+
 # Gets the x, y coordinates of a pixel in an nxm image
 def get_xy(row, col, n, m):
     i, j = col + 0.5, row + 0.5
