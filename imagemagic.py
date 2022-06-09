@@ -45,7 +45,7 @@ import math
 # y = n/2 - j
 # The above equations result from the following
 # The ij coordinates for the center of the image are (m/2, n/2)
-# A pixel has a distance from the origin given by (i-m/2, n/2-j)
+# A pixel has a position relative to the center given by (i-m/2, n/2-j)
 # The xy coordinates of the pixel are (i-m/2, n/2-j)
 
 # Gets the x, y coordinates of a pixel in an nxm image
