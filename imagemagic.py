@@ -52,7 +52,7 @@ def transform(filename, A):
     ymax, ymin = max(T[1]), min(T[1])
     print('xmax=%1.2f xmin=%1.2f' %(xmax, xmin))
     print('ymax=%1.2f ymin=%1.2f' %(ymax, ymin))
-    N, M = int(round(ymax-ymin))+1, int(round(xmax-xmin))+1
+    N, M = int(ymax-ymin)+1, int(xmax-xmin)+1
     print("N=%d\nM=%d" %(N, M))
 
     # Get the xy coordinates for every pixel and store as column vectors in matrix X
