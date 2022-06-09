@@ -3,7 +3,7 @@ import matplotlib.image as mpimg
 import numpy as np
 import math
 
-# Algorithm:
+# Algorithm
 # 1. Create an XY coordinate system with an origin at the center of the image
 # 2. Get the XY coordinates of the corners of the image 
 # 3. Apply a linear transformation to the corners of the image
@@ -27,6 +27,7 @@ import math
 #    In this algorithm we convert between xy coordinates and row and column values in the image
 #    The purpose of the XY coordinate system is to enable the linear transformations T = AV and Y = AX
 
+# Coordinate systems
 # To make this I used two coordinate systems
 # The xy coordinate system has an origin at the center of the image
 # The ij coordinate system has an origin at the upper left corner of the image
