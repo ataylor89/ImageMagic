@@ -9,7 +9,7 @@ def get_xy(row, col, n, m):
     i, j = col + 0.5, row + 0.5
     return [i - m/2, n/2 - j]
 
-# Gets the row and column of a pixel with coordinates (x, y) in an nxm image
+# Gets the row and column of a pixel in an nxm image
 # The origin of the xy coordinate system is at the center of the image
 def get_rowcol(x, y, n, m):
     return [int(n/2 - y), int(x + m/2)]
@@ -55,8 +55,8 @@ def transform(filename, A):
     N, M = int(round(ymax-ymin))+1, int(round(xmax-xmin))+1
     print("N=%d\nM=%d" %(N, M))
 
-    # Convert to a new coordinate system with (x, y) coordinates and an origin at the center of the image
-    # Store the (x, y) coordinates of every pixel as column vectors in X
+    # Get the xy coordinates for every pixel and store as column vectors in matrix X
+    # The origin of the xy coordinate system is at the center of the image 
     X = []
     for row in range(n):
         for col in range(m):
@@ -66,7 +66,7 @@ def transform(filename, A):
     X = np.column_stack(X)  
 
     # Perform the linear transformation Y = AX
-    # Y contains the transformed vectors
+    # Y contains the new coordinates for every pixel
     Y = np.dot(A, X)
 
     # Create a matrix for our new image
@@ -75,7 +75,6 @@ def transform(filename, A):
     canvas = [[[255, 255, 255] for i in range(M)] for j in range(N)]
 
     # Copy the RGB values in img to the appropriate row and column in canvas 
-    # Convert between coordinate systems to get the new position of values
     num_cols = len(X[0])
     for col in range(num_cols):
         x, y = X[0][col], X[1][col]
