@@ -36,7 +36,7 @@ import math
 # In a 100x100 image, the xy coordinates for row 0 and column 0 are (-49.5, 49.5)
 # The row and column values for a pixel with coordinates (i, j) are simply row = int(i), col = int(j)
 # which is equivalent to row = floor(i), col = floor(j)
-# This makes it easy to convert between xy coordinates and row and column values
+# This helps us convert between xy coordinates and row and column values
 # row and column for a pixel <-> ij coordinates <-> xy coordintes
 
 # Gets the x, y coordinates of a pixel in an nxm image
