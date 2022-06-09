@@ -33,8 +33,8 @@ import math
 #        = (|x + m/2|, |y - n/2|) 
 #        = (x + m/2, n/2 - y)
 # The row and column values are given by 
-# row = floor(i) = int(n/2 - y)
-# col = floor(j) = int(x + m/2)
+# row = floor(j) = int(n/2 - y)
+# col = floor(i) = int(x + m/2)
 
 # Gets the x, y coordinates of a pixel in an nxm image
 def get_xy(row, col, n, m):
