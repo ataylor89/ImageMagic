@@ -27,29 +27,6 @@ import math
 #    In this algorithm we convert between xy coordinates and row and column values in the image
 #    The purpose of the XY coordinate system is to enable the linear transformations T = AV and Y = AX
 
-# Coordinate systems
-# To make this we use two coordinate systems
-# The xy coordinate system has an origin at the center of the image
-# The ij coordinate system has an origin at the upper left corner of the image
-# The coordinates for a pixel correspond to the center of the pixel (a pixel is a rectangle)
-# Thus the ij coordinates for row 0 and column 0 are (0.5, 0.5)
-# In a 100x100 image, the xy coordinates for row 0 and column 0 are (-49.5, 49.5)
-# The row and column values for a pixel with coordinates (i, j) are simply row = int(i), col = int(j)
-# which is equivalent to row = floor(i), col = floor(j)
-# This helps us convert between xy coordinates and row and column values
-# row and column for a pixel <-> ij coordinates <-> xy coordintes
-# The ij coordinate system gives a pixel's position relative to the upper left corner of the image
-# The xy coordinate system gives a pixel's position relative to the center of the image
-
-# Converting between coordinate systems
-# Given an nxm image (n is the number of rows, m is the number of columns)
-# x = i - m/2
-# y = n/2 - j
-# The above equations result from the following
-# The ij coordinates for the center of the image are (m/2, n/2)
-# A pixel has a position relative to the center given by (i-m/2, n/2-j)
-# The xy coordinates of the pixel are (i-m/2, n/2-j)
-
 # Gets the x, y coordinates of a pixel in an nxm image
 def get_xy(row, col, n, m):
     i, j = col + 0.5, row + 0.5
