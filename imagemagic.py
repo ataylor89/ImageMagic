@@ -7,7 +7,7 @@ import math
 # i is the column and j is the row
 # The xy coordinate system has an origin at the center of the image
 def get_xy(i, j, n, m):
-    return [i - (m-1)/2, (n-1)/2 - j]
+    return [i+0.5 - m/2, n/2 - (j+0.5)]
 
 # Gets the (i, j) values in an nxm matrix for a pixel with coordinates (x, y) 
 # i is the column and j is the row
@@ -22,7 +22,7 @@ def get_xy(i, j, n, m):
 # For example if n=100, m=200
 # Then the vertices of the image are (99.5, 49.5), (-99.5, 49.5), (-99.5, -49.5), (99.5, -49.5)
 def get_ij(x, y, n, m):
-    return [int(round(x + (m-1)/2)), int(round((n-1)/2 - y))]
+    return [int(x + m/2), int(n/2 - y)]
 
 # Rotates an image around the origin by the specified number of radians
 def rotate(filename, radians):
