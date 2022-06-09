@@ -3,26 +3,16 @@ import matplotlib.image as mpimg
 import numpy as np
 import math
 
-# Gets the (x, y) coordinates of pixel (i, j) in an nxm matrix
-# i is the column and j is the row
-# The xy coordinate system has an origin at the center of the image
-def get_xy(i, j, n, m):
-    return [i+0.5 - m/2, n/2 - (j+0.5)]
+# Gets the x, y coordinates of a pixel in an nxm image
+# The origin of the xy coordinate system is at the center of the image
+def get_xy(row, col, n, m):
+    i, j = col + 0.5, row + 0.5
+    return [i - m/2, n/2 - j]
 
-# Gets the (i, j) values in an nxm matrix for a pixel with coordinates (x, y) 
-# i is the column and j is the row
-# The xy coordinate system has an origin at the center of the image
-#
-# Equations:
-# x = i - (m-1)/2 
-# i = x + (m-1)/2
-# y = (n-1)/2 - j 
-# j = (n-1)/2 - y
-#
-# For example if n=100, m=200
-# Then the vertices of the image are (99.5, 49.5), (-99.5, 49.5), (-99.5, -49.5), (99.5, -49.5)
-def get_ij(x, y, n, m):
-    return [int(x + m/2), int(n/2 - y)]
+# Gets the row and column of a pixel with coordinates (x, y) in an nxm image
+# The origin of the xy coordinate system is at the center of the image
+def get_rowcol(x, y, n, m):
+    return [int(n/2 - y), int(x + m/2)]
 
 # Rotates an image around the origin by the specified number of radians
 def rotate(filename, radians):
@@ -52,9 +42,9 @@ def transform(filename, A):
     # N is the number of rows, M is the number of columns
     # V and T are vertex matrices 
     V = (np.array(get_xy(0, 0, n, m)), 
-            np.array(get_xy(m-1, 0, n, m)),
-            np.array(get_xy(0, n-1, n, m)),
-            np.array(get_xy(m-1, n-1, n, m)))
+            np.array(get_xy(0, m-1, n, m)),
+            np.array(get_xy(n-1, 0, n, m)),
+            np.array(get_xy(n-1, m-1, n, m)))
     V = np.column_stack(V)
     # Perform the linear transformation T = AV to get the transformed vertices
     T = np.dot(A, V)
@@ -70,7 +60,7 @@ def transform(filename, A):
     X = []
     for row in range(n):
         for col in range(m):
-            vertex = get_xy(col, row, n, m)
+            vertex = get_xy(row, col, n, m)
             X.append(np.array(vertex))
     X = tuple(X)
     X = np.column_stack(X)  
@@ -90,8 +80,8 @@ def transform(filename, A):
     for col in range(num_cols):
         x, y = X[0][col], X[1][col]
         xt, yt = Y[0][col], Y[1][col]
-        [i, j] = get_ij(x, y, n, m)
-        [it, jt] = get_ij(xt, yt, N, M)
-        canvas[jt][it] = img[j][i]
+        [row, col] = get_rowcol(x, y, n, m)
+        [row_t, col_t] = get_rowcol(xt, yt, N, M)
+        canvas[row_t][col_t] = img[row][col]
 
     return canvas
