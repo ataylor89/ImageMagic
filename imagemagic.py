@@ -69,21 +69,17 @@ def transform(filename, A):
     n, m = len(img), len(img[0])
     print('%dx%d matrix (%s)' %(n, m, filename))
 
-    # Get the dimensions for our new image
-    # N is the number of rows, M is the number of columns
-    # V and T are vertex matrices 
-    V = (np.array(get_xy(0, 0, n, m)), 
-            np.array(get_xy(0, m-1, n, m)),
-            np.array(get_xy(n-1, 0, n, m)),
-            np.array(get_xy(n-1, m-1, n, m)))
+    # Get the dimensions of the new (transformed) image
+    V = (np.array([-m/2, n/2]), np.array([-m/2, -n/2]), np.array([m/2, n/2]), np.array([m/2, -n/2]))
     V = np.column_stack(V)
-    # Perform the linear transformation T = AV to get the transformed vertices
+    # Perform the linear transformation T = AV on the corners of the original image
     T = np.dot(A, V)
     xmax, xmin = max(T[0]), min(T[0])
     ymax, ymin = max(T[1]), min(T[1])
     print('xmax=%1.2f xmin=%1.2f' %(xmax, xmin))
     print('ymax=%1.2f ymin=%1.2f' %(ymax, ymin))
-    N, M = int(ymax-ymin)+1, int(xmax-xmin)+1
+    # The dimensions of the new image are N rows and M columns
+    N, M = int(ymax-ymin), int(xmax-xmin)
     print("N=%d\nM=%d" %(N, M))
 
     # Get the xy coordinates for every pixel and store as column vectors in matrix X
